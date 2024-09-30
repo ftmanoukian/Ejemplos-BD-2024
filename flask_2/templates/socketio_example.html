@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask-SocketIO Ejemplo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // Conectar con el servidor usando SocketIO
+            var socket = io();
+
+            // Enviar un mensaje cuando el usuario hace clic en el botón
+            document.getElementById('sendMessage').onclick = function () {
+                var msg = document.getElementById('message').value;
+                socket.send(msg);
+            };
+
+            // Recibir un mensaje del servidor y mostrarlo
+            socket.on('message', function (msg) {
+                var messages = document.getElementById('messages');
+                var newMessage = document.createElement('li');
+                newMessage.textContent = msg;
+                messages.appendChild(newMessage);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Comunicación con Flask-SocketIO</h1>
+    <input id="message" type="text" placeholder="Escribí un mensaje...">
+    <button id="sendMessage">Enviar</button>
+    <ul id="messages"></ul>
+</body>
+</html>
