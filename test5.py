@@ -32,6 +32,9 @@ def newTarea(diaLimite : dia, duracion : int):
 # cada dia dura 10 horas
 horasOcupadas = [3,5,1,4,8,6,2] # horas ocupadas, ordenadas por dia
 
+#para crear una nueva lista de tareas random descomentar la línea de abajo
+#tareas2 = [newTarea(diaLimite = [_ for _ in dia][randint(0,len(dia)-1)], duracion = randint(1,4)) for _ in range(25)]
+
 tareas = [
     {'diaLimite': dia.v, 'duracion': 1},
     {'diaLimite': dia.j, 'duracion': 1},
